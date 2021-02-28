@@ -52,7 +52,7 @@ The coefficient of drag depends on the Reynolds number of the particle:
 
 ![eq18](https://user-images.githubusercontent.com/52175303/109432726-785de300-79c1-11eb-9164-5aaf57bc190f.png)
 
-![image](https://user-images.githubusercontent.com/52175303/109432758-a04d4680-79c1-11eb-8fe4-4ad6f9b553ea.png)
+![image](https://user-images.githubusercontent.com/52175303/109433419-156e4b00-79c5-11eb-9e7c-2f2fac466a68.png)
 
 Once the total force on a member is known, its position and velocity are updated using the Forward Euler method.
 
