@@ -72,5 +72,23 @@ Where ![eq23](https://user-images.githubusercontent.com/52175303/109432850-0b971
 
 ### Full Model with Electrical Forces
 
+![1ElFieldOn](https://github.com/cacton77/Modeling-and-Simulation-of-Robotic-3D-Printer/blob/main/1ElFieldOn.gif?raw=true)
 
+The effects of electrical force are very minimal on the simulation compared to gravity, and even drag. The very small charges, and high electric permittivity combine for a electrical force on the magnitude of ![eq28](https://user-images.githubusercontent.com/52175303/109433241-37b39900-79c4-11eb-9fae-375ab2243db2.png). The force of gravity is on the order of ![eq29](https://user-images.githubusercontent.com/52175303/109433249-4437f180-79c4-11eb-8cf6-0073603d5ccb.png), completely masking the electrical force. The major effect electrical force has on the simulation is its contribution to runtime. The operations that need to be performed on 3 dimensional arrays are costly, even without nested for loops. Dropping this term significantly speeds up the simulation, and has little effect on the outcome. In part 2, we will forgo electric forces, and drag in order to speed up our simulation, and run a Genetic Algorithm on it.
+
+### Simplified Free Fall Model With Genetic Algorithm
+
+For this implementation of our Genetic Algorithm, the number of genetic strings per generation, S, was 100, the number of parents, P, was 10, and 1000 generations were tested. The design parameters that were optimized were the angular velocities of the linkages, and the extrusion velocity, ![eq30](https://user-images.githubusercontent.com/52175303/109433269-66317400-79c4-11eb-9215-b00943b191b6.png).
+
+![2Paths](https://user-images.githubusercontent.com/52175303/109433282-777a8080-79c4-11eb-93a4-707dbeb25405.jpg)
+
+The genetic algorithm did not result in a generated outcome that matches the desired particle positions. The cost vs generation plot fell steeply in the beginning, then plateaus for hundreds of generations multiple times across the duration of the simulation. This could be the effects of inbreeding which would cause the simulation to stagnate around a false minimum between the best parent strings. The infrequent drops after plateauing could be due to randomly generated strings that performed better than the inbred strings.  
+
+![2CostVsGen](https://user-images.githubusercontent.com/52175303/109433302-8bbe7d80-79c4-11eb-954a-b14d61bfe2fd.jpg)
+
+![image](https://user-images.githubusercontent.com/52175303/109433327-aa247900-79c4-11eb-91d5-912e8c5d706f.png)
+
+## Conclusion
+
+In this project, a robotic 3D printer was simulated. The dynamics of the deposited particles were used to update their positions via forward Euler's method, and a string of design parameters controlled the rotational velocities of the linkages, and the extrusion velocity. It was determined that the effects of electricity on the particles is minimal, so in a second portion of the project, the forces of drag and electric field were discarded in favor of a fast run-time. In this second portion, this simplified simulation was fed into a Genetic Algorithm that randomly generated, and bred the design parameters across multiple generations to find a design string that resulted in an extruded pattern most similar to a reference pattern. The optimal design parameters after testing resulted in a path that was somewhat accurate to the desired pattern. Errors between the desired, and generated patterns could be due to inbreeding, or an error in the simulation.
 
